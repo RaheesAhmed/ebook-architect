@@ -1,0 +1,5 @@
+{
+  "name": "eBook Architect",
+  "description": "A professional AI-powered eBook generator using Gemini 3 Pro for content and Gemini Nano Banana for illustrations.",
+  "requestFramePermissions": []
+}

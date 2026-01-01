@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eBook Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Merriweather', 'serif'],
+            },
+            colors: {
+              brand: {
+                50: '#f0f9ff',
+                100: '#e0f2fe',
+                500: '#0ea5e9',
+                600: '#0284c7',
+                700: '#0369a1',
+                900: '#0c4a6e',
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for book reader */
+      .book-scroll::-webkit-scrollbar {
+        width: 8px;
+      }
+      .book-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      .book-scroll::-webkit-scrollbar-thumb {
+        background: #d1d5db;
+        border-radius: 4px;
+      }
+      .book-scroll::-webkit-scrollbar-thumb:hover {
+        background: #9ca3af;
+      }
+
+      /* Print Styles for PDF Export */
+      @media print {
+        @page {
+          margin: 0;
+          size: auto;
+        }
+        body {
+          background: white;
+          color: black;
+        }
+        .no-print, header, aside, .sticky {
+          display: none !important;
+        }
+        .print-break-before {
+          page-break-before: always;
+        }
+        .print-content {
+          overflow: visible !important;
+          height: auto !important;
+          width: 100% !important;
+          position: static !important;
+          display: block !important;
+        }
+        .print-cover-image {
+          height: 100vh !important;
+          width: 100% !important;
+          object-fit: cover !important;
+        }
+        /* Ensure SVGs print nicely */
+        svg {
+          break-inside: avoid;
+        }
+        p, h1, h2, h3, li {
+          orphans: 3;
+          widows: 3;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-markdown": "https://esm.sh/react-markdown@^10.1.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "html2canvas": "https://esm.sh/html2canvas@1.4.1",
+    "jspdf": "https://esm.sh/jspdf@2.5.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

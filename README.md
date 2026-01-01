@@ -1,73 +1,81 @@
-# Book Creator Tool
+# 📚 eBook Architect
 
-Book Creator Tool is a web-based application designed to automate the creation of books using AI. Users can input specifications such as the title, genre, language, and more, and the application generates a complete book with chapters and a narrative based on these inputs.
+**eBook Architect** is a powerful AI-driven web application that transforms simple topics into professional, illustrated eBooks and LinkedIn Carousels. 
 
-## Features
+Powered by **Google Gemini 3 Pro** for deep, engaging content and **Gemini 2.5 Flash Image** for stunning visuals, it allows users to architect knowledge into beautiful, downloadable formats in minutes.
 
-- **Custom Book Specifications**: Users can specify various aspects of the book such as title, genre, tone, and style.
-- **Chapter Management**: Automatically generate a specified number of chapters based on user input.
-- **AI-Powered**: Utilizes OpenAI's GPT models to generate coherent and engaging text.
-- **Responsive Design**: Accessible from various devices, ensuring a wide range of usability.
+![App Screenshot](https://placehold.co/1200x600/e2e8f0/475569?text=eBook+Architect+Preview)
 
-## Technology Stack
+## ✨ Key Features
 
-- **Frontend**: React.js with Tailwind CSS for styling.
-- **Backend**: Next.js API routes for handling asynchronous requests.
-- **AI**: OpenAI's GPT-3.5 Turbo(gpt-3.5-turbo-16k) for text generation.
+- **🤖 Dual-AI Engine**: Uses `gemini-3-pro-preview` for high-quality, long-form writing and `gemini-2.5-flash-image` for consistent, artistic illustrations.
+- **🎨 Interactive Diagrams**: Automatically generates complex data structures and flows as interactive SVG diagrams that users can zoom and pan.
+- **📱 Multi-Format Support**: 
+  - **Standard eBook**: Comprehensive chapters with narrative flow.
+  - **LinkedIn Carousel**: Punchy, slide-based content optimized for social engagement.
+- **🔍 Google Search Grounding**: toggleable option to fetch real-time, factual data for accurate non-fiction writing.
+- **📄 Client-Side PDF Export**: Generates high-fidelity PDFs directly in the browser using `html2canvas` and `jspdf`, preserving layout and illustrations.
+- **✏️ Live Editor**: Review, edit, and refine content before finalizing your book.
+- **🔐 Secure API Management**: Bring your own Key (BYOK) architecture. API keys are stored locally in your browser's localStorage.
 
-## Getting Started
+## 🛠️ Tech Stack
+
+- **Frontend**: React 19, TypeScript, Tailwind CSS
+- **AI Integration**: Google GenAI SDK (`@google/genai`)
+- **State Management**: React Hooks
+- **Rendering & Export**: `react-markdown`, `html2canvas`, `jspdf`
+- **Icons**: Lucide React
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js
-- npm or yarn
+- Node.js (v18 or higher)
+- A Google Gemini API Key (Get one at [Google AI Studio](https://aistudio.google.com/app/apikey))
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/ebook-architect.git
+   cd ebook-architect
    ```
-   git clone https://github.com/RaheesAhmed/book-generator.git
+
+2. **Install dependencies**
+   ```bash
+   npm install
    ```
-   go to directory:
+
+3. **Start the development server**
+   ```bash
+   npm start
    ```
-   cd book-generator
-   ```
-2. Install dependencies:
 
-```
-npm install
-```
+## ⚙️ Configuration
 
-3. Set up environment variables:
-   Create a `.env` file in the root directory and add the following:
+You can configure the API key in two ways:
 
-```
-OPENAI_API_KEY=Your_OpenAI_API_Key
+1. **UI Configuration (Recommended)**: 
+   - Click the **"Add API Key"** button in the top right corner of the app.
+   - Enter your key. It will be saved securely to your browser's Local Storage.
 
-```
+2. **Environment Variable**:
+   - Create a `.env` file in the root directory.
+   - Add: `API_KEY=your_gemini_api_key_here`
 
-4. Run the development server:
+## 📖 How to Use
 
-```
-npm run dev
-```
+1. **Define your Topic**: Enter a subject (e.g., "The Future of Quantum Computing").
+2. **Customize**: 
+   - Select **Format** (eBook vs Carousel).
+   - Set **Author Name**, **Audience**, and **Tone**.
+   - Choose an **Illustration Style** (e.g., Cyberpunk, Minimalist, Watercolor).
+   - Adjust the **Chapter Count** slider.
+3. **Architect**: Click "Generate Outline". The AI will propose a structure.
+4. **Refine**: Edit chapter titles or descriptions if needed.
+5. **Generate**: Click "Generate Book". Watch as the AI writes text and draws illustrations in real-time.
+6. **Read & Export**: Use the reader view to browse your book, interact with diagrams, and click **"Download PDF"** to save your masterpiece.
 
-### Usage
+## 🤝 Contributing
 
-Fill out the form on the home page with your desired book details such as title, genre, number of chapters, etc., and click the "Generate Book" button. The book content will be displayed on the right side of the page once it's generated.
-
-### Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-
-To contribute to this project, follow these steps:
-
-1. Fork the Project
-2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
-3. Commit your Changes (git commit -m 'Add some AmazingFeature')
-4. Push to the Branch (git push origin feature/AmazingFeature)
-5. Open a Pull Request
-
-### Contact
-
-Rahees Ahmed - raheesahmed256@gmail.com
+Contributions are welcome! Please feel free to submit a Pull Request.

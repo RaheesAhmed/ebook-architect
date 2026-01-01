@@ -1,0 +1,46 @@
+import React from 'react';
+import { 
+  BookOpen, 
+  Sparkles, 
+  PenTool, 
+  Image as ImageIcon, 
+  CheckCircle, 
+  Loader2, 
+  ChevronRight, 
+  ChevronLeft,
+  Download,
+  Library,
+  Settings,
+  RefreshCw,
+  Key,
+  X,
+  Printer,
+  ZoomIn,
+  ZoomOut,
+  Move,
+  User,
+  LayoutTemplate
+} from 'lucide-react';
+
+export { 
+  BookOpen, 
+  Sparkles, 
+  PenTool, 
+  ImageIcon, 
+  CheckCircle, 
+  Loader2, 
+  ChevronRight, 
+  ChevronLeft,
+  Download,
+  Library,
+  Settings,
+  RefreshCw,
+  Key,
+  X,
+  Printer,
+  ZoomIn,
+  ZoomOut,
+  Move,
+  User,
+  LayoutTemplate
+};
