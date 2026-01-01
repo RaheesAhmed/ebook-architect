@@ -94,10 +94,8 @@ export async function* generateChapterContentStream(
   ${formatInstruction}
   
   RULES:
-  1. Write in Markdown format.
-  2. **Visuals**: Use SVG diagrams ONLY when explaining a complex logic, flow, or data structure. Do NOT generate an SVG for simple decorative purposes.
-  3. Wrap the SVG code in \`\`\`svg ... \`\`\` blocks.
-  4. If an SVG is generated, do not describe it in text immediately before or after, let the diagram speak for itself.
+  Always Write in Markdown format.
+  
   `;
 
   if (previousChapterSummary) {

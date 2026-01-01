@@ -73,7 +73,7 @@ const InteractiveSvg = ({ content }: { content: string }) => {
           <div className="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-slate-400 uppercase tracking-widest border border-slate-200 rounded-full z-10 shadow-sm">
             Figure
           </div>
-          <div className="bg-slate-50/50 rounded-xl border border-slate-200 shadow-sm overflow-hidden relative group">
+          <div className="bg-surface-50/50 rounded-xl border border-surface-200 shadow-sm overflow-hidden relative group">
             {/* Toolbar */}
             <div className="absolute top-2 right-2 flex items-center gap-1 bg-white/90 backdrop-blur border border-slate-200 rounded-lg p-1 z-10 opacity-0 group-hover:opacity-100 transition-opacity no-print">
                 <button onClick={() => setScale(s => Math.min(s + 0.2, 4))} className="p-1.5 hover:bg-slate-100 rounded text-slate-600" title="Zoom In">
@@ -235,7 +235,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
   return (
     <div className="flex flex-col h-screen w-full bg-slate-100 overflow-hidden fixed inset-0 font-sans">
       {/* Toolbar */}
-      <header className="flex-none bg-white border-b border-slate-200 px-4 md:px-6 py-3 flex items-center justify-between shadow-sm z-30 no-print">
+      <header className="flex-none bg-white border-b border-surface-200 px-4 md:px-6 py-3 flex items-center justify-between shadow-sm z-30 no-print">
         <div className="flex items-center gap-4">
           <button onClick={onBack} className="text-slate-500 hover:text-slate-800 transition-colors flex items-center gap-1 text-xs font-bold uppercase tracking-wide">
             <ChevronLeft className="w-4 h-4" /> Exit Reader
@@ -249,7 +249,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
            <button 
              onClick={handleDownloadPdf}
              disabled={isGeneratingPdf}
-             className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-brand-700 bg-brand-50 hover:bg-brand-100 rounded-lg transition-colors disabled:opacity-50"
+             className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-primary-700 bg-primary-50 hover:bg-primary-100 rounded-lg transition-colors disabled:opacity-50"
            >
              {isGeneratingPdf ? <Loader2 className="w-4 h-4 animate-spin" /> : <Printer className="w-4 h-4" />}
              {isGeneratingPdf ? 'Exporting...' : 'Download PDF'}
@@ -261,14 +261,14 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
                <>
                 <button 
                     onClick={() => setIsEditing(!isEditing)}
-                    className={`p-2 rounded-lg transition-colors ${isEditing ? 'bg-brand-100 text-brand-700' : 'text-slate-400 hover:text-brand-600 hover:bg-slate-50'}`}
+                    className={`p-2 rounded-lg transition-colors ${isEditing ? 'bg-primary-100 text-primary-700' : 'text-slate-400 hover:text-primary-600 hover:bg-surface-50'}`}
                     title="Edit Text"
                 >
                     <PenTool className="w-4 h-4" />
                 </button>
                </>
            )}
-           <span className="text-xs font-mono text-slate-400 bg-slate-50 border border-slate-200 px-2 py-1 rounded hidden md:block">
+           <span className="text-xs font-mono text-slate-400 bg-surface-50 border border-surface-200 px-2 py-1 rounded hidden md:block">
              {currentChapterIndex === -1 ? 'COVER' : `${currentChapterIndex + 1}/${book.outline.length}`}
            </span>
         </div>
@@ -277,17 +277,17 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
       {/* Main Content Area */}
       <div className="flex-1 overflow-hidden flex relative w-full">
         {/* Sidebar Navigation */}
-        <aside className="hidden lg:flex flex-col w-72 bg-white border-r border-slate-200 h-full overflow-y-auto z-10 shrink-0 no-print">
-          <div className="p-5 border-b border-slate-100 bg-slate-50/50">
+        <aside className="hidden lg:flex flex-col w-72 bg-white border-r border-surface-200 h-full overflow-y-auto z-10 shrink-0 no-print">
+          <div className="p-5 border-b border-surface-100 bg-surface-50/50">
              <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Table of Contents</div>
           </div>
           <nav className="p-3 space-y-1">
             <button 
               onClick={() => setCurrentChapterIndex(-1)}
               className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all flex items-center gap-3
-                ${currentChapterIndex === -1 ? 'bg-slate-900 text-white shadow-md' : 'text-slate-600 hover:bg-slate-50'}`}
+                ${currentChapterIndex === -1 ? 'bg-slate-900 text-white shadow-md' : 'text-slate-600 hover:bg-surface-50'}`}
             >
-              <BookOpen className={`w-4 h-4 ${currentChapterIndex === -1 ? 'text-brand-300' : 'text-slate-400'}`} />
+              <BookOpen className={`w-4 h-4 ${currentChapterIndex === -1 ? 'text-primary-300' : 'text-slate-400'}`} />
               <span className="font-medium">Cover</span>
             </button>
             <div className="pt-2 pb-1 px-4 text-[10px] font-bold text-slate-300 uppercase tracking-widest">Chapters</div>
@@ -296,10 +296,10 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
                 key={chapter.id}
                 onClick={() => setCurrentChapterIndex(idx)}
                 className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all group
-                  ${currentChapterIndex === idx ? 'bg-brand-50 text-brand-900 ring-1 ring-brand-200' : 'text-slate-600 hover:bg-slate-50'}`}
+                  ${currentChapterIndex === idx ? 'bg-primary-50 text-primary-900 ring-1 ring-primary-200' : 'text-slate-600 hover:bg-surface-50'}`}
               >
                 <div className="flex items-start gap-3">
-                  <span className={`text-[10px] font-bold mt-1 w-5 shrink-0 ${currentChapterIndex === idx ? 'text-brand-400' : 'text-slate-300 group-hover:text-slate-400'}`}>
+                  <span className={`text-[10px] font-bold mt-1 w-5 shrink-0 ${currentChapterIndex === idx ? 'text-primary-400' : 'text-slate-300 group-hover:text-slate-400'}`}>
                     {(idx + 1).toString().padStart(2, '0')}
                   </span>
                   <span className="line-clamp-2 leading-relaxed">{chapter.title}</span>
@@ -310,7 +310,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
         </aside>
 
         {/* Reader View */}
-        <main className="flex-1 overflow-y-auto book-scroll bg-slate-100 flex flex-col items-center w-full relative">
+        <main className="flex-1 overflow-y-auto book-scroll bg-surface-100 flex flex-col items-center w-full relative">
           
           {/* OFF-SCREEN PDF GENERATOR CONTAINER */}
           {/* This container renders ALL content for PDF generation but stays hidden from user view */}
@@ -337,7 +337,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
                    </div>
                    {/* We include SVGs in PDF but non-interactive */}
                    {ch.content?.includes('```svg') && (
-                      <div className="mt-8 p-4 border border-slate-200 rounded-lg bg-slate-50">
+                      <div className="mt-8 p-4 border border-slate-200 rounded-lg bg-surface-50">
                          <div dangerouslySetInnerHTML={{ __html: ch.content.match(/```svg([\s\S]*?)```/)?.[1] || '' }} />
                       </div>
                    )}
@@ -346,7 +346,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
           </div>
 
           {/* User Visible Content */}
-          <div className="w-full max-w-3xl bg-white shadow-2xl shadow-slate-200/50 min-h-full flex flex-col no-print">
+          <div className="w-full max-w-3xl bg-white shadow-2xl shadow-surface-200/50 min-h-full flex flex-col no-print">
             
             {/* Cover View */}
             {currentChapterIndex === -1 && (
@@ -364,7 +364,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
                       <h1 className="text-3xl md:text-6xl font-black text-white font-serif mb-6 drop-shadow-xl leading-tight tracking-tight max-w-4xl">
                         {book.config.title}
                       </h1>
-                      <div className="w-20 h-1 bg-brand-500 rounded-full mb-6"></div>
+                      <div className="w-20 h-1 bg-primary-500 rounded-full mb-6"></div>
                       <p className="text-base md:text-xl text-slate-200 font-medium tracking-widest uppercase font-sans max-w-2xl mb-4">
                         {book.config.topic}
                       </p>
@@ -379,7 +379,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
                     </div>
                     <button 
                       onClick={handleNext}
-                      className="group relative px-8 py-4 bg-slate-900 text-white rounded-xl hover:bg-brand-600 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 flex items-center gap-3 font-bold text-base"
+                      className="group relative px-8 py-4 bg-slate-900 text-white rounded-xl hover:bg-primary-600 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5 flex items-center gap-3 font-bold text-base"
                     >
                       <span>Begin Reading</span> 
                       <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -392,7 +392,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
             {currentChapter && (
               <article className="animate-fade-in flex-1 flex flex-col w-full bg-white">
                 {/* Chapter Image Header */}
-                <div className="w-full h-[35vh] md:h-[45vh] relative group bg-slate-100 overflow-hidden shrink-0">
+                <div className="w-full h-[35vh] md:h-[45vh] relative group bg-surface-100 overflow-hidden shrink-0">
                     {currentChapter.imageUrl ? (
                        <img 
                         src={currentChapter.imageUrl} 
@@ -400,7 +400,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
                         className={`w-full h-full object-cover transition-all duration-700 ${regeneratingImage ? 'opacity-50 blur-sm' : 'opacity-100'}`}
                        />
                     ) : (
-                       <div className="w-full h-full flex items-center justify-center text-slate-300 bg-slate-100">
+                       <div className="w-full h-full flex items-center justify-center text-slate-300 bg-surface-100">
                            <ImageIcon className="w-12 h-12" />
                        </div>
                     )}
@@ -412,7 +412,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
                         <button 
                             onClick={handleRegenerateImage}
                             disabled={regeneratingImage}
-                            className="bg-white/90 backdrop-blur text-slate-800 p-2.5 rounded-xl shadow-lg hover:bg-brand-600 hover:text-white transition-colors flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider"
+                            className="bg-white/90 backdrop-blur text-slate-800 p-2.5 rounded-xl shadow-lg hover:bg-primary-600 hover:text-white transition-colors flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider"
                         >
                             {regeneratingImage ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5" />}
                             Redraw
@@ -422,7 +422,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
 
                 <div className="px-8 py-12 md:px-20 md:py-16 w-full flex-1">
                   <div className="text-center mb-12">
-                     <span className="inline-block text-brand-600 font-bold tracking-[0.2em] uppercase text-[10px] mb-4 border-b border-brand-100 pb-2">
+                     <span className="inline-block text-primary-600 font-bold tracking-[0.2em] uppercase text-[10px] mb-4 border-b border-primary-100 pb-2">
                          Chapter {currentChapterIndex + 1}
                      </span>
                      <h2 className="text-3xl md:text-4xl font-serif font-medium text-slate-900 leading-tight">
@@ -433,13 +433,13 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
                   {isEditing ? (
                       <div className="space-y-4">
                           <textarea 
-                             className="w-full h-[60vh] p-6 text-base md:text-lg font-serif leading-relaxed text-slate-700 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 resize-none transition-shadow shadow-inner"
+                             className="w-full h-[60vh] p-6 text-base md:text-lg font-serif leading-relaxed text-slate-700 bg-surface-50 border border-surface-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 resize-none transition-shadow shadow-inner"
                              value={editBuffer}
                              onChange={(e) => setEditBuffer(e.target.value)}
                           />
                           <div className="flex gap-3 justify-end">
                               <button onClick={() => setIsEditing(false)} className="px-5 py-2.5 text-slate-500 hover:text-slate-800 text-sm font-medium">Cancel</button>
-                              <button onClick={handleSaveEdit} className="px-6 py-2.5 bg-brand-600 text-white rounded-lg hover:bg-brand-700 text-sm font-bold shadow-lg shadow-brand-500/20">Save Changes</button>
+                              <button onClick={handleSaveEdit} className="px-6 py-2.5 bg-primary-600 text-white rounded-lg hover:bg-primary-700 text-sm font-bold shadow-lg shadow-primary-500/20">Save Changes</button>
                           </div>
                       </div>
                   ) : (
@@ -451,11 +451,11 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
                                 h1: ({node, ...props}) => <h2 className="text-xl md:text-2xl font-sans font-bold text-slate-900 mt-10 mb-4" {...props} />, // Map h1 to h2 style
                                 h2: ({node, ...props}) => <h3 className="text-lg md:text-xl font-sans font-bold text-slate-800 mt-10 mb-4" {...props} />,
                                 h3: ({node, ...props}) => <h4 className="text-base md:text-lg font-sans font-bold text-slate-800 mt-8 mb-3 uppercase tracking-wide" {...props} />,
-                                ul: ({node, ...props}) => <ul className="list-disc list-outside ml-5 mb-6 space-y-2 marker:text-brand-400" {...props} />,
-                                ol: ({node, ...props}) => <ol className="list-decimal list-outside ml-5 mb-6 space-y-2 marker:text-brand-400 font-medium" {...props} />,
-                                blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-brand-200 pl-6 italic text-slate-500 my-8 py-2" {...props} />,
+                                ul: ({node, ...props}) => <ul className="list-disc list-outside ml-5 mb-6 space-y-2 marker:text-primary-400" {...props} />,
+                                ol: ({node, ...props}) => <ol className="list-decimal list-outside ml-5 mb-6 space-y-2 marker:text-primary-400 font-medium" {...props} />,
+                                blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-primary-200 pl-6 italic text-slate-500 my-8 py-2" {...props} />,
                                 strong: ({node, ...props}) => <strong className="font-bold text-slate-800" {...props} />,
-                                a: ({node, ...props}) => <a className="text-brand-600 underline decoration-brand-200 underline-offset-2 hover:decoration-brand-500 transition-colors" {...props} />,
+                                a: ({node, ...props}) => <a className="text-primary-600 underline decoration-primary-200 underline-offset-2 hover:decoration-primary-500 transition-colors" {...props} />,
                               }}
                             >
                               {displayContent}
@@ -471,7 +471,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
             )}
 
             {/* Navigation Footer */}
-            <div className="sticky bottom-0 border-t border-slate-100 p-4 md:p-6 flex justify-between items-center bg-white/95 backdrop-blur-md z-20 no-print">
+            <div className="sticky bottom-0 border-t border-surface-100 p-4 md:p-6 flex justify-between items-center bg-white/95 backdrop-blur-md z-20 no-print">
                <button 
                 onClick={handlePrev}
                 disabled={currentChapterIndex === -1}
@@ -483,7 +483,7 @@ const BookReader: React.FC<BookReaderProps> = ({ book, onBack, onUpdateContent, 
                <button 
                 onClick={handleNext}
                 disabled={currentChapterIndex === book.outline.length - 1}
-                className="bg-slate-900 text-white hover:bg-brand-600 disabled:opacity-0 disabled:pointer-events-none flex items-center gap-3 text-sm font-bold px-6 py-3 rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                className="bg-slate-900 text-white hover:bg-primary-600 disabled:opacity-0 disabled:pointer-events-none flex items-center gap-3 text-sm font-bold px-6 py-3 rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                >
                  <span className="hidden md:inline">Next Chapter</span> <span className="md:hidden">Next</span> <ChevronRight className="w-4 h-4" />
                </button>

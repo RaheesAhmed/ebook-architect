@@ -1,105 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>eBook Architect</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['Merriweather', 'serif'],
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eBook Architect - Create Professional Books</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1', // Indigo-like Google Blue
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+              950: '#1e1b4b',
             },
-            colors: {
-              brand: {
-                50: '#f0f9ff',
-                100: '#e0f2fe',
-                500: '#0ea5e9',
-                600: '#0284c7',
-                700: '#0369a1',
-                900: '#0c4a6e',
-              }
+            surface: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              900: '#0f172a',
             }
           },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-out',
+            'slide-up': 'slideUp 0.5s ease-out',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'shimmer': 'shimmer 2s linear infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' },
+            }
+          },
+          backgroundSize: {
+            '300%': '300%',
+          }
         },
-      }
-    </script>
-    <style>
-      /* Custom scrollbar for book reader */
-      .book-scroll::-webkit-scrollbar {
-        width: 8px;
-      }
-      .book-scroll::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-      .book-scroll::-webkit-scrollbar-thumb {
-        background: #d1d5db;
-        border-radius: 4px;
-      }
-      .book-scroll::-webkit-scrollbar-thumb:hover {
-        background: #9ca3af;
+      },
+    }
+  </script>
+  <link rel="icon" href="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/library.svg"
+    type="image/svg+xml">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f8fafc;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Glassmorphism */
+    .glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Print Styles */
+    @media print {
+      @page {
+        margin: 0;
+        size: auto;
       }
 
-      /* Print Styles for PDF Export */
-      @media print {
-        @page {
-          margin: 0;
-          size: auto;
-        }
-        body {
-          background: white;
-          color: black;
-        }
-        .no-print, header, aside, .sticky {
-          display: none !important;
-        }
-        .print-break-before {
-          page-break-before: always;
-        }
-        .print-content {
-          overflow: visible !important;
-          height: auto !important;
-          width: 100% !important;
-          position: static !important;
-          display: block !important;
-        }
-        .print-cover-image {
-          height: 100vh !important;
-          width: 100% !important;
-          object-fit: cover !important;
-        }
-        /* Ensure SVGs print nicely */
-        svg {
-          break-inside: avoid;
-        }
-        p, h1, h2, h3, li {
-          orphans: 3;
-          widows: 3;
-        }
+      body {
+        background: white;
+        color: black;
       }
-    </style>
+
+      .no-print,
+      header,
+      aside,
+      .sticky {
+        display: none !important;
+      }
+
+      .print-break-before {
+        page-break-before: always;
+      }
+
+      .print-content {
+        overflow: visible !important;
+        height: auto !important;
+        width: 100% !important;
+        display: block !important;
+      }
+
+      .print-cover-image {
+        height: 100vh !important;
+        width: 100% !important;
+        object-fit: cover !important;
+      }
+
+      svg {
+        break-inside: avoid;
+      }
+
+      p,
+      h1,
+      h2,
+      h3,
+      li {
+        orphans: 3;
+        widows: 3;
+      }
+    }
+  </style>
   <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react-markdown": "https://esm.sh/react-markdown@^10.1.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "html2canvas": "https://esm.sh/html2canvas@1.4.1",
-    "jspdf": "https://esm.sh/jspdf@2.5.1"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react-markdown": "https://esm.sh/react-markdown@^10.1.0",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+        "html2canvas": "https://esm.sh/html2canvas@1.4.1",
+        "jspdf": "https://esm.sh/jspdf@2.5.1"
+      }
+    }
+    </script>
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
-    <div id="root"></div>
+
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
