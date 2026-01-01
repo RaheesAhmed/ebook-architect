@@ -4,7 +4,7 @@
 
 Powered by **Google Gemini 3 Pro** for deep, engaging content and **Gemini 2.5 Flash Image** for stunning visuals, it allows users to architect knowledge into beautiful, downloadable formats in minutes.
 
-![App Screenshot](https://placehold.co/1200x600/e2e8f0/475569?text=eBook+Architect+Preview)
+![App Screenshot](Screenshot.png)
 
 ## ✨ Key Features
 
